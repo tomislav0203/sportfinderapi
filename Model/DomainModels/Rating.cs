@@ -12,6 +12,5 @@ namespace SportFinderApi.Models
         public virtual decimal Value { get; set; }
 
         public virtual Sport Sport { get; set; }
-        public virtual User User { get; set; }
     }
 }

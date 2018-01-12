@@ -13,6 +13,9 @@ namespace Repository.Mapping
             Map(x => x.StartTime);
             Map(x => x.Location);
 
+            References(x => x.City).Column("CityId").Not.LazyLoad();
+            References(x => x.Sport).Column("SportId").Not.LazyLoad();
+            References(x => x.Creator).Column("UserId").Not.LazyLoad();
             HasManyToMany(x => x.Participants).Table("UsersEvents").ParentKeyColumn("EventId").ChildKeyColumn("UserId");
             Table("Events");
         }

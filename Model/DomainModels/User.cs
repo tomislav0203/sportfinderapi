@@ -17,5 +17,7 @@ namespace SportFinderApi.Models
 
         public virtual City City { get; set; }
         public virtual IList<Event> Events { get; set; }
+        public virtual IList<Subscription> Subscriptions { get; set; }
+        public virtual IList<Rating> Ratings { get; set;  }
     }
 }

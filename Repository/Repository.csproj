@@ -66,6 +66,9 @@
     <Compile Include="Configuration\FluentNHibernateHelper.cs" />
     <Compile Include="Mapping\CityMap.cs" />
     <Compile Include="Mapping\EventMap.cs" />
+    <Compile Include="Mapping\RatingMap.cs" />
+    <Compile Include="Mapping\SportMap.cs" />
+    <Compile Include="Mapping\SubscriptionMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,12 +80,6 @@
     <Content Include="Configuration\hibernate.cfg.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Mapping\Event.hbm.xml" />
-    <Content Include="Mapping\Sport.hbm.xml" />
-    <EmbeddedResource Include="Mapping\City.hbm.xml" />
-    <EmbeddedResource Include="Mapping\User.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Models.csproj">

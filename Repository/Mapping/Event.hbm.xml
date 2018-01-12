@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="Model" namespace="SportFinderApi.Models">
+  <class name="Event" table="Events" dynamic-update="true">
+    <cache usage="read-write" />
+    <id name="Id" column="Id" type="int">
+      <generator class="native" />
+    </id>
+    <property name="MaxPlayers" />
+    <property name="FreePlayers" />
+    <property name="StartTime" />
+    <property name="Location" />
+    <many-to-one name="Sport" class="Sport" column="SportId" />
+    <many-to-one name="Creator" class="User" column="UserId" />
+    <many-to-one name="City" class="City" column="CityId" />
+    <bag name="Participants" table="UsersEvents" lazy="false" >
+      <key column="EventId"></key>
+      <many-to-many class="User" column="UserId"></many-to-many>
+    </bag>
+  </class>
+</hibernate-mapping>

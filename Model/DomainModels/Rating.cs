@@ -14,3 +14,4 @@ namespace SportFinderApi.Models
         public virtual Sport Sport { get; set; }
     }
 }
+ 

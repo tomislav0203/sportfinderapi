@@ -62,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\NHibernateSession.cs" />
     <Compile Include="Configuration\FluentNHibernateHelper.cs" />
     <Compile Include="Mapping\CityMap.cs" />
     <Compile Include="Mapping\EventMap.cs" />
@@ -75,11 +74,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Configuration\hibernate.cfg.xml">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Models.csproj">

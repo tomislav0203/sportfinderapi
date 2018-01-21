@@ -13,10 +13,10 @@ namespace Repository.Mapping
             Map(x => x.UserName);
             Map(x => x.Email);
             Map(x => x.Password);
-            References(x => x.City).Column("CityId").Not.LazyLoad();
-            HasMany(x => x.Ratings).KeyColumn("UserId").Inverse().Not.LazyLoad();
-            HasManyToMany(x => x.Subscriptions).Table("UsersSubscriptions").ParentKeyColumn("UserId").ChildKeyColumn("SubscriptionId").Inverse().Not.LazyLoad();
-            HasManyToMany(x => x.Events).Table("UsersEvents").ParentKeyColumn("UserId").ChildKeyColumn("EventId").Inverse().Not.LazyLoad();
+            References(x => x.City).Column("CityId");
+            HasMany(x => x.Ratings).KeyColumn("UserId").Inverse();
+            HasManyToMany(x => x.Subscriptions).Table("UsersSubscriptions").ParentKeyColumn("UserId").ChildKeyColumn("SubscriptionId").Inverse();
+            HasManyToMany(x => x.Events).Table("UsersEvents").ParentKeyColumn("UserId").ChildKeyColumn("EventId").Inverse();
             Table("Users");
         }
     }

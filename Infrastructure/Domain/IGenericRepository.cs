@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Linq.Expressions;
+
 namespace Infrastructure.Domain
 {
     public interface IGenericRepository<T>
@@ -7,6 +10,7 @@ namespace Infrastructure.Domain
         void Delete(T entity);
         void Update(T entity);
         T GetById(int id);
+        T Single(Expression<Func<T, bool>> predicates);
     }
 }
 

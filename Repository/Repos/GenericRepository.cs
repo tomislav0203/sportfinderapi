@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using Infrastructure.Domain;
 using NHibernate;
 using NHibernate.Criterion;
@@ -35,6 +37,16 @@ namespace Repository.Repos
         public void Update(T entity)
         {
             Session.Update(entity);
+        }
+
+        public T Single(Expression<Func<T, bool>> predicates)
+        {
+            // Get object from nHibernate session object
+            var retObj = Session
+                .Query<T>()
+                .Where(predicates).SingleOrDefault();
+
+            return retObj;
         }
 
         public IEnumerable<T> FindAll(DetachedCriteria criteria)

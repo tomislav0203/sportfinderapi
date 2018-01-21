@@ -1,4 +1,6 @@
-﻿using Repository.Configuration;
+﻿using Model.DomainModels;
+using Repository.Configuration;
+using Repository.Repos;
 using SportFinderApi.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +10,19 @@ namespace SportFinderApi.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<Event> Get()
+        private IUserRepository _userRepo;
+
+        public ValuesController(IUserRepository repository)
         {
-            IEnumerable<Event> events;
-            using (var session = FluentNHibernateHelper.OpenSession())
-            {
-                events = session.Query<User>().Where(x => x.Id == 1).SingleOrDefault().Events.ToList();
-            }
-            return events;
+            _userRepo = repository;
+        }
+
+        // GET api/values
+        public User Get()
+        {
+            User user;
+            user = _userRepo.GetById(1);
+            return user;
         }
 
         // GET api/values/5

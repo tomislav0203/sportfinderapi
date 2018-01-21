@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SportFinderApi.Controllers;
 using System.Web.Http;
 
 namespace SportFinderApi
@@ -13,6 +11,7 @@ namespace SportFinderApi
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.Filters.Add(new UnitOfWorkActionFilter());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

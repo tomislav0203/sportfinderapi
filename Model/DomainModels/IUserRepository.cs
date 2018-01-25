@@ -6,7 +6,6 @@ namespace Model.DomainModels
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        IEnumerable<City> GetAllCities();
-        City FindCity(int id);
+        City FindCity(string name);
     }
 }

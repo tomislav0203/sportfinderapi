@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace Infrastructure.Domain
@@ -11,6 +12,7 @@ namespace Infrastructure.Domain
         void Update(T entity);
         T GetById(int id);
         T Single(Expression<Func<T, bool>> predicates);
+        IEnumerable<T> All(Expression<Func<T, bool>> predicates);
     }
 }
 

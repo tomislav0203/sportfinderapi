@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DomainModels\City.cs" />
     <Compile Include="DomainModels\Event.cs" />
+    <Compile Include="DomainModels\IEventRepository.cs" />
     <Compile Include="DomainModels\IUserRepository.cs" />
     <Compile Include="DomainModels\Rating.cs" />
     <Compile Include="DomainModels\Sport.cs" />

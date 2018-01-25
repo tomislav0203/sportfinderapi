@@ -61,6 +61,7 @@ namespace SportFinderApi.App_Start
         {
             kernel.Bind<Infrastructure.Domain.IUnitOfWork>().To<Repository.Configuration.UnitOfWork>();
             kernel.Bind<Model.DomainModels.IUserRepository>().To<Repository.Repos.UserRepository>();
+            kernel.Bind<Model.DomainModels.IEventRepository>().To<Repository.Repos.EventRepository>();
         }        
     }
 }

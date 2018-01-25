@@ -49,9 +49,14 @@ namespace Repository.Repos
             return retObj;
         }
 
-        public IEnumerable<T> FindAll(DetachedCriteria criteria)
+        public IEnumerable<T> All(Expression<Func<T, bool>> predicates)
         {
-            throw new NotImplementedException();
+            // Get list of objects from nHibernate session object
+            var retObj = Session
+                .Query<T>()
+                .Where(predicates);
+
+            return retObj;
         }
     }
 }

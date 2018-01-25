@@ -13,14 +13,10 @@ namespace Repository.Repos
 
         }
 
-        public City FindCity(int id)
+        public City FindCity(string name)
         {
-            return Session.Get<City>(id);
+            return Session.Query<City>().Where(x => x.Name.ToLower().Equals(name.ToLower())).SingleOrDefault();
         }
 
-        public IEnumerable<City> GetAllCities()
-        {
-            return Session.Query<City>().ToList();
-        }
     }
 }

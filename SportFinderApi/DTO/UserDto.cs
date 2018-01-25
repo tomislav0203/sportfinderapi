@@ -14,8 +14,9 @@ namespace SportFinderApi.DTO
         public string Email { get; set; }
         public string Password { get; set; }
         public int? CityId { get; set; }
+        public string CityName { get; set; }
 
-        public UserDto(string firstName, string lastName, string userName, string email, string password, int cityId)
+        public UserDto(string firstName, string lastName, string userName, string email, string password, int cityId, string cityName)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -23,6 +24,7 @@ namespace SportFinderApi.DTO
             Email = email;
             Password = password;
             CityId = cityId;
+            CityName = cityName;
         }
 
         public bool Validate()

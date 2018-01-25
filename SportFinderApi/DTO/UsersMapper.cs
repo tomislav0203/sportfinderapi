@@ -10,7 +10,7 @@ namespace SportFinderApi.DTO
     {
         public static UserDto MapUserToUserDto(User user)
         {
-            return new UserDto(user.FirstName, user.LastName, user.UserName, user.Email, user.Password, user.City.Id);
+            return new UserDto(user.FirstName, user.LastName, user.UserName, user.Email, user.Password, user.City.Id, user.City.Name);
         }
 
         public static User MapUserDtoToUser(UserDto user)

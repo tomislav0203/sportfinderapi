@@ -28,13 +28,6 @@ namespace SportFinderApi.Controllers
             return Ok(UsersMapper.MapUserToUserDto(user));
         }
 
-        [HttpGet]
-        //GET api/users/getallcities
-        public IHttpActionResult GetAllCities()
-        {
-            return Ok(_userRepo.GetAllCities());
-        }
-
         [HttpPost]
         //POST api/users/login
         public IHttpActionResult Login(UserDto input)
@@ -54,7 +47,9 @@ namespace SportFinderApi.Controllers
             //provjeri jel ima vec neki email ili username
             if (_userRepo.Single(x => x.Email.Equals(input.Email) || x.UserName.Equals(input.UserName)) != null) return BadRequest("Postoji vec user s podatcima email/username");
             User user = UsersMapper.MapUserDtoToUser(input);
-            user.City = _userRepo.FindCity((int)input.CityId);
+            City city = _userRepo.FindCity(input.CityName);
+            if (city == null) return BadRequest("Grad ne postoji");
+            user.City = city;
             _userRepo.Add(user);
             return Ok();
         }

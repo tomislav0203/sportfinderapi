@@ -23,6 +23,25 @@ namespace SportFinderApi.DTO
 
         }
 
+        public static EventParticipantsDto MapEventsToEventParticipantsDto(Event a, List<UserDto> participants)
+        {
+            EventParticipantsDto result = new EventParticipantsDto()
+            {
+                Id = a.Id,
+                MaxPlayers = a.MaxPlayers,
+                FreePlayers = a.FreePlayers,
+                StartTime = a.StartTime,
+                Location = a.Location,
+                SportId = a.Sport.Id,
+                SportName = a.Sport.Name,
+                CityName = a.City.Name,
+                Participants = participants
+                
+            };
+            return result;
+
+        }
+
         public static Event MapEventDtoToEvent(EventDto e)
         {
             return new Event()

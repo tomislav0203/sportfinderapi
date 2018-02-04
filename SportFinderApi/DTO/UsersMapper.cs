@@ -23,5 +23,32 @@ namespace SportFinderApi.DTO
                 Email = user.Email
             };
         }
+
+        public static List<UserDto> MapUserToUserDto(List<User> users)
+        {
+            return users.Select(user => new UserDto()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Password = user.Password,
+                Email = user.Email
+
+            }).ToList();
+        }
+
+        public static List<UserDto> MapUserToUserDto(List<User> users, int sportId)
+        {
+            return users.Select(user => new UserDto()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Password = user.Password,
+                Email = user.Email,
+                SportRating = user.Ratings.Where(x => x.Sport.Id == sportId).SingleOrDefault().Value
+
+            }).ToList();
+        }
     }
 }

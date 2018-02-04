@@ -18,5 +18,10 @@ namespace Repository.Repos
             return Session.Query<City>().Where(x => x.Name.ToLower().Equals(name.ToLower())).SingleOrDefault();
         }
 
+        public IEnumerable<Sport> GetAllSports()
+        {
+            return Session.Query<Sport>();
+        }
+
     }
 }

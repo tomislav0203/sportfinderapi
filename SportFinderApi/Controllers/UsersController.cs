@@ -52,6 +52,16 @@ namespace SportFinderApi.Controllers
             user.City = city;
             _userRepo.Add(user);
             return Ok();
+
+            ////init all ratings
+            //List<Sport> sports = _userRepo.GetAllSports().ToList();
+            //user.Ratings = new List<Rating>();
+            //foreach(Sport s in sports)
+            //{
+            //    user.Ratings.Add(new Rating() { Sport = s, Value = 0 });
+            //}
+            //_userRepo.Add(user);
+            //return Ok();
         }
     }
 }

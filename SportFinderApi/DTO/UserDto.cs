@@ -15,6 +15,12 @@ namespace SportFinderApi.DTO
         public string Password { get; set; }
         public int? CityId { get; set; }
         public string CityName { get; set; }
+        public decimal SportRating { get; set; }
+
+        public UserDto()
+        {
+
+        }
 
         public UserDto(string firstName, string lastName, string userName, string email, string password, int cityId, string cityName)
         {
@@ -29,7 +35,7 @@ namespace SportFinderApi.DTO
 
         public bool Validate()
         {
-            if (String.IsNullOrEmpty(FirstName) || String.IsNullOrEmpty(LastName) || String.IsNullOrEmpty(UserName) || String.IsNullOrEmpty(Email) || String.IsNullOrEmpty(Password) || CityId == null) return false;
+            if (String.IsNullOrEmpty(FirstName) || String.IsNullOrEmpty(LastName) || String.IsNullOrEmpty(UserName) || String.IsNullOrEmpty(Email) || String.IsNullOrEmpty(Password)) return false;
             return true;
 
         }

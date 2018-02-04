@@ -19,5 +19,11 @@ namespace SportFinderApi.Models
         public virtual IList<Event> Events { get; set; }
         public virtual IList<Subscription> Subscriptions { get; set; }
         public virtual IList<Rating> Ratings { get; set;  }
+
+        public void AddRating(decimal ratingValue, int sportId)
+        {
+            Rating rating = this.Ratings.FirstOrDefault();
+            rating.Value = (rating.Value + ratingValue) / 2;
+        }
     }
 }

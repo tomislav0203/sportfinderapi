@@ -32,6 +32,7 @@ namespace SportFinderApi.Controllers
             City city = _userRepo.FindCity(eventDto.CityName);
             if(city == null) return BadRequest("navedeni grad ne postoji");
             Event ev = EventMapper.MapEventDtoToEvent(eventDto);
+            ev.Creator = user;
             ev.City = city;
             ev.Creator = user;
             ev.Sport = new Sport() { Id = eventDto.SportId };
@@ -69,14 +70,34 @@ namespace SportFinderApi.Controllers
         }
 
         [HttpGet]
-        //GET api/events/getuserevents
-        public IHttpActionResult FindEvents(int sportId, DateTime date, string cityName, int freePlayers)
+        //GET api/events/findevents
+        public IHttpActionResult FindEvents(int sportId, DateTime? date, string cityName, int freePlayers)
         {
-            if (date == null) return BadRequest("unesite datum");
+            List<EventDto> events = new List<EventDto>();
+
+            if (date == null)
+            {
+                events = EventMapper.MapEventsToEventDto(_eventRepo.All(x => x.FreePlayers >= freePlayers && x.Sport.Id == sportId).ToList());
+            }
+            else
+            {
+                events = EventMapper.MapEventsToEventDto(_eventRepo.All(x => x.StartTime.Date == date.Value.Date && x.FreePlayers >= freePlayers && x.Sport.Id == sportId).ToList());
+            }
             City city = _userRepo.FindCity(cityName);
             if (city == null) return BadRequest("navedeni grad ne postoji");
-            List<EventDto> events = EventMapper.MapEventsToEventDto(_eventRepo.All(x => x.StartTime.Date == date.Date && x.FreePlayers >= freePlayers).ToList());
             return Ok(events);
+        }
+
+        [HttpGet]
+        //GET api/events/getevent
+        public IHttpActionResult GetEvent(int id)
+        {
+            Event ev = _eventRepo.Single(x => x.Id == id);
+            if (ev == null) return BadRequest("event ne postoji");
+            List<UserDto> participants = UsersMapper.MapUserToUserDto(ev.Participants.ToList(), ev.Sport.Id);
+            participants.Add(UsersMapper.MapUserToUserDto(ev.Creator));
+            EventParticipantsDto result = EventMapper.MapEventsToEventParticipantsDto(ev, participants);
+            return Ok(result);
         }
 
 
